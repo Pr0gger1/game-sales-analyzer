@@ -1,3 +1,5 @@
 import os
 
-DATASET_FOLDER = os.path.join(os.getcwd(), "data")
+DATASET_FOLDER: str = os.path.join(os.path.dirname(__file__), "data")
+DATASET_FILENAME: str = "vgchartz-2024.csv"
+DATASET_FULLPATH: str = os.path.join(DATASET_FOLDER, DATASET_FILENAME)
