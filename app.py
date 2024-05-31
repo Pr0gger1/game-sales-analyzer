@@ -1,8 +1,12 @@
 from pyspark.sql import SparkSession, DataFrame
 
 import constants
-from scripts.analysis_by_regions import get_popular_games_by_region, get_popular_genres_by_region, get_popular_platforms_by_region
-from spark_utils import SparkUtils
+from scripts.analysis_by_regions import get_popular_games_by_region, \
+    get_popular_genres_by_region, \
+    get_popular_platforms_by_region, \
+    get_game_sale_estimates
+
+from utils.spark_utils import SparkUtils, column_dict
 
 
 def main():
@@ -13,8 +17,9 @@ def main():
         header=True,
         schema=SparkUtils.DATASET_STRUCT
     )
-    get_popular_genres_by_region(df, 'na_sales')
-    get_popular_games_by_region(df, 'na_sales')
+    # get_popular_genres_by_region(df, column_dict['na_sales'])
+    # get_game_sale_estimates(df)
+    # get_popular_games_by_region(df, 'na_sales')
     get_popular_platforms_by_region(df, 'na_sales')
 
 
