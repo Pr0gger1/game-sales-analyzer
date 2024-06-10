@@ -17,6 +17,7 @@ def get_popular_genres_by_region(df: DataFrame, region_column: str) -> DataFrame
 
 def visualize_popular_genres(df: DataFrame, region_column: str):
     pdf = df.toPandas()
-    pdf.plot(kind='pie', y=region_column, labels=pdf[column_dict['genre']], legend=False)
+    pdf.plot(kind='pie', y=region_column, labels=None, autopct='%1.0f%%')
+    plt.legend(labels=pdf[column_dict['genre']], bbox_to_anchor=(1.05, 1), loc='upper left')
     plt.title(f"Топ жанров по региону {region_column}")
     plt.show()

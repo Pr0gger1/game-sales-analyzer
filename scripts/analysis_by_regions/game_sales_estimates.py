@@ -1,7 +1,3 @@
-import os
-
-
-import constants
 from utils.spark_utils import column_dict as cd
 import seaborn as sns
 from utils.file_utils import save_plot_as_image
