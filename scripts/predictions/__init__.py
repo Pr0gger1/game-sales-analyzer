@@ -1,1 +1,2 @@
 from .predict_sales_for_game import predict_game_success
+from .next_game_performance import predict_next_game_performance

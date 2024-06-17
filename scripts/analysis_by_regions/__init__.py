@@ -1,5 +1,0 @@
-from .popular_games import get_popular_games_by_region
-from .popular_genres import get_popular_genres_by_region
-from .popular_platforms import get_popular_platforms_by_region
-from .game_sales_estimates import get_game_sale_estimates
-from .game_by_regions import get_game_sales_by_regions

@@ -1,0 +1,1 @@
+from . import developers, games, genres, platforms, predictions, publisher

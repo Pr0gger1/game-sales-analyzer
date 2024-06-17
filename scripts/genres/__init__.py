@@ -1,0 +1,2 @@
+from .top_genres_by_score import get_top_genres_by_critic_score_and_sales
+from .popular_genres import get_popular_genres_by_region
