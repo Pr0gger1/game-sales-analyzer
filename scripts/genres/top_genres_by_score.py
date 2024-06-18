@@ -5,17 +5,15 @@ from pandas import DataFrame
 
 
 def get_top_genres_by_critic_score_and_sales(df: DataFrame):
-    genre_df = (
-        df.groupBy("genre")
+    genre_df = df.groupBy("genre") \
         .agg(
             f.median("critic_score").alias("critic_score"),
             f.sum("total_sales").alias("total_sales"),
-        )
-        .sort(["critic_score", "total_sales"], ascending=[False, False])
+        ) \
+        .sort(["critic_score", "total_sales"], ascending=[False, False]) \
         .toPandas()
-    )
-    visualize_df(genre_df)
 
+    visualize_df(genre_df)
 
 
 def visualize_df(df: DataFrame):
