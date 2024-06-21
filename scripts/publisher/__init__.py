@@ -1,1 +1,2 @@
 from .publisher_sales import get_top_sales_performance_by_publisher
+from .games_by_year import count_of_games_by_year_from_publisher

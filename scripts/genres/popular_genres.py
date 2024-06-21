@@ -8,7 +8,7 @@ from utils.spark_utils import SparkUtils, column_dict
 
 
 def get_popular_genres_by_region(
-    df: DataFrame,
+    df: DataFrame, 
     region_column: str, 
     start_date: date = None,
     end_date: date = None
@@ -34,7 +34,7 @@ def get_popular_genres_by_region(
 
     Plot.make_pie_plot(
         df=grouped_by_genre_df.toPandas(),
-        legend_entity="genre",
+        legend_label_entity="genre",
         title=f"Top genres by region {region_column}",
         y_label=region_column,
     )

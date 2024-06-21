@@ -4,9 +4,14 @@ from pyspark.ml.feature import VectorAssembler
 from pyspark.ml.regression import LinearRegression, RandomForestRegressor
 from pyspark.ml.evaluation import RegressionEvaluator
 from pyspark.sql import DataFrame
-from pyspark.sql.functions import col, lit, unix_timestamp
+from pyspark.sql.functions import col, unix_timestamp
 
-def predict_next_game_performance(spark: SparkSession, df: DataFrame, series_name: str, platform: str = None):
+def predict_next_game_performance(
+    spark: SparkSession,
+    df: DataFrame, 
+    series_name: str,
+    platform: str = None
+):
     df = df.drop("last_update").na.drop()
 
     # Фильтрация данных для серии
@@ -71,7 +76,12 @@ def train_and_predict(spark: SparkSession, df: DataFrame, next_release_date_nume
 
 
 
-def predict_next_game_performance_random_tree(spark: SparkSession, df: DataFrame, series_name: str, platform: str = None):
+def predict_next_game_performance_random_tree(
+    spark: SparkSession, 
+    df: DataFrame, 
+    series_name: str,
+    platform: str = None
+):
     df = df.na.drop()
 
     # Фильтрация данных для серии

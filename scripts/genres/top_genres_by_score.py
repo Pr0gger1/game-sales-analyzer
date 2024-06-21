@@ -17,11 +17,19 @@ def get_top_genres_by_critic_score_and_sales(df: DataFrame):
 
 
 def visualize_df(df: DataFrame):
-    palette = sns.color_palette("tab20", len(df))
+    palette = sns.color_palette("tab20", len(df["genre"].unique()))
     plt.figure(figsize=(12, 10))
     plt.subplot(2, 1, 1)
 
-    ax = sns.barplot(x=df["genre"], y=df["critic_score"], palette=palette)
+    ax = sns.barplot(
+        data=df,
+        x="genre", 
+        y="critic_score", 
+        hue="genre",
+        palette=palette,
+        legend=False
+    )
+
     ax.bar_label(
         ax.containers[0],
         label_type="edge",
@@ -37,7 +45,15 @@ def visualize_df(df: DataFrame):
 
 
     plt.subplot(2, 1, 2)
-    ax = sns.barplot(x=df["genre"], y=df["total_sales"], palette=palette)
+    ax = sns.barplot(
+        data=df,
+        x="genre",
+        y="total_sales",
+        palette=palette,
+        legend=False,
+        hue="genre"
+    )
+    
     ax.bar_label(
         ax.containers[0],
         label_type="edge",

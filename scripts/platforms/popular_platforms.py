@@ -8,12 +8,12 @@ from utils.spark_utils import SparkUtils
 
 
 def get_popular_platforms_by_region(
-    df: DataFrame, 
+    df: DataFrame,
     region_column: str,
     start_date: date = None,
     end_date: date = None
 ) -> DataFrame:
-    filtered_df: DataFrame = df
+    filtered_df: DataFrame = df.na.drop()
     period_str = ""
 
     if start_date is not None and end_date is not None:
@@ -35,7 +35,7 @@ def get_popular_platforms_by_region(
     SparkUtils.round_float_columns(grouped_by_genre_df, 3).show(50, False)
     Plot.make_pie_plot(
         df=grouped_by_genre_df.toPandas(),
-        legend_entity="console",
+        legend_label_entity="console",
         title=f"Platforms by sales volume by region: {region_column} {period_str}".strip(),
         y_label=region_column,
     )
