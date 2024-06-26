@@ -21,9 +21,9 @@ def get_popular_platforms_by_region(
         end_date_str = end_date.strftime("%Y-%m-%d")
         period_str = f"in period {start_date} - {end_date}"
 
-        filtered_df = df.filter(
-            (df["release_date"] >= start_date_str)
-            & (df["release_date"] <= end_date_str)
+        filtered_df = filtered_df.filter(
+            (filtered_df["release_date"] >= start_date_str)
+            & (filtered_df["release_date"] <= end_date_str)
         )
 
     grouped_by_genre_df = (

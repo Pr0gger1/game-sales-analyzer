@@ -62,6 +62,7 @@ def train_and_predict(spark: SparkSession, df: DataFrame, next_release_date_nume
         predictions_test = lr_model.transform(test_df)
         evaluator = RegressionEvaluator(labelCol=target, predictionCol="prediction", metricName="rmse")
         rmse = evaluator.evaluate(predictions_test)
+        print(f"evaluator: {evaluator}")
         print(f"Root Mean Squared Error (RMSE) on test data for {target}: {rmse}")
         
         # Предсказание для следующей даты релиза

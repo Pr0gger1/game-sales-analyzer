@@ -6,12 +6,13 @@ import seaborn as sns
 def get_top_sales_performance_by_publisher(df: DataFrame) -> DataFrame:
     grouped_df = df.groupBy("publisher").agg(
         f.sum("total_sales").alias("total_sales"),
-        f.count("title").alias("title")
+        f.count("title").alias("title"),
+        f.mean("critic_score").alias("critic_score")
     ).orderBy("total_sales", ascending=False)
     
     pdf = grouped_df.toPandas()
-    sorted_publishers_by_sales = pdf.sort_values(by="total_sales", ascending=False).head(10)
-    sorted_publishers_by_num = pdf.sort_values(by="title", ascending=False).head(10)
+    sorted_publishers_by_sales = pdf.sort_values(by="total_sales", ascending=False).head(30)
+    sorted_publishers_by_num = pdf.sort_values(by="title", ascending=False).head(30)
     
     grouped_df.show()
     
@@ -80,4 +81,17 @@ def visualize_df(
     plt.xlabel("Total Sales")
     plt.ylabel("Publisher")
     plt.tight_layout()
+    plt.show()
+    
+    plt.figure(figsize=(10, 8))
+    sns.pointplot(
+        x="critic_score",
+        y="total_sales",
+        hue="publisher",
+        data=publishers_by_sales,
+        palette=palette
+    )
+    plt.xticks(rotation=90)
+    plt.title("Top publishers by critic score")
+    plt.legend(loc="upper left", bbox_to_anchor=(1.05, 1))
     plt.show()
