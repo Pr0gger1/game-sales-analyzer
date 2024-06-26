@@ -1,1 +1,1 @@
-from .next_game_performance import predict_next_game_performance, predict_next_game_performance_random_tree
+from .next_game_performance import predict_next_game_performance_linear_regression, predict_next_game_performance_random_tree
